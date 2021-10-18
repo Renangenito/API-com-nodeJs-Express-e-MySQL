@@ -1,10 +1,13 @@
-module.exports = app =>{
+const Atendimento = require('../models/atendimentos')
 
+module.exports = app =>{
     app.get('/atendimentos', (req, res)=> res.send('Você está na rota de atendimentos e fez o Get'))
     app.post('/atendimentos', (req, res)=> {
-    console.log(req.body)
-    res.send('Você está na rota de atendimentos e fez o Post') })
-                                       //.send, ou seja, mandar
+    const atendimento = req.body
+
+    Atendimento.adiciona(atendimento)
+    res.send('Post atendimento') })
+     //.send, ou seja, mandar
     
 }
 
